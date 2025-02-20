@@ -73,6 +73,9 @@ class War():
     
     def vikingAttack(self):
         # your code here
+        if not self.vikingArmy:
+            return
+
         randomSaxon = random.choice(self.saxonArmy)
         randomViking = random.choice(self.vikingArmy)
 
@@ -87,6 +90,9 @@ class War():
     
     def saxonAttack(self):
         # your code here
+        if not self.saxonArmy:
+            return
+        
         randomSaxon = random.choice(self.saxonArmy)
         randomViking = random.choice(self.vikingArmy)
 
