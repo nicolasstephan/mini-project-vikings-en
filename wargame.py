@@ -21,7 +21,12 @@ for i in range(0,5):
 round = 0
 while great_war.showStatus() == "Vikings and Saxons are still in the thick of battle.":
     great_war.vikingAttack()
+    print(great_war.vikingAttack())
+
     great_war.saxonAttack()
+    print(great_war.saxonAttack())
+
+
     print(f"round: {round} // Viking army: {len(great_war.vikingArmy)} warriors",f"and Saxon army: {len(great_war.saxonArmy)} warriors")
     print(great_war.showStatus())
     round += 1

@@ -76,8 +76,16 @@ class War():
         if not self.vikingArmy:
             return
 
-        randomSaxon = random.choice(self.saxonArmy)
-        randomViking = random.choice(self.vikingArmy)
+        if len(self.vikingArmy) > 1:
+            randomViking = random.choice(self.vikingArmy)
+        else:
+            randomViking = self.vikingArmy[0]
+
+        if len(self.saxonArmy) > 1:
+            randomSaxon = random.choice(self.saxonArmy)
+        else:
+            randomSaxon = self.saxonArmy[0]
+
 
         result = randomSaxon.receiveDamage(randomViking.strength)
 
@@ -93,8 +101,16 @@ class War():
         if not self.saxonArmy:
             return
         
-        randomSaxon = random.choice(self.saxonArmy)
-        randomViking = random.choice(self.vikingArmy)
+        if len(self.saxonArmy) > 1:
+            randomSaxon = random.choice(self.saxonArmy)
+        else:
+            randomSaxon = self.saxonArmy[0]
+
+
+        if len(self.vikingArmy) > 1:
+            randomViking = random.choice(self.vikingArmy)
+        else:
+            randomViking = self.vikingArmy[0]
 
         result = randomViking.receiveDamage(randomSaxon.strength)
         
@@ -110,7 +126,7 @@ class War():
         elif len(self.vikingArmy) <= 0:
             return "Saxons have fought for their lives and survive another day..."
         
-        else:
+        elif len(self.saxonArmy) != 0 and len(self.vikingArmy) != 0:
             return "Vikings and Saxons are still in the thick of battle."
 
     pass
