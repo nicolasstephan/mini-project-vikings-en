@@ -53,7 +53,7 @@ class Saxon(Soldier):
         if self.health > 0:
             return f"A Saxon has received {damage} points of damage"
         else:
-            return f"A Saxon has died in act of combat"
+            return f"A Saxon has died in combat"
 
 # Davicente
 
@@ -73,35 +73,28 @@ class War():
     
     def vikingAttack(self):
         # your code here
-        randomValueSaxon = random.randint(0,4)
-        randomValueViking = random.randint(0,4)
+        randomSaxon = random.choice(self.saxonArmy)
+        randomViking = random.choice(self.vikingArmy)
 
-        randomSaxon = self.saxonArmy[randomValueSaxon]
-        randomViking = self.vikingArmy[randomValueViking]
+        result = randomSaxon.receiveDamage(randomViking.strength)
 
-        randomSaxon.receiveDamage(randomViking.strength)
-        
         if randomSaxon.health <= 0:
-            self.saxonArmy.pop(randomValueSaxon)
-        
-        return randomSaxon.receiveDamage(randomViking.strength)
+            self.saxonArmy.remove(randomSaxon)
+        return result
+
 
         # What about "Saxon not attacking back"?
     
     def saxonAttack(self):
         # your code here
-        randomValueSaxon = random.randint(0,4)
-        randomValueViking = random.randint(0,4)
+        randomSaxon = random.choice(self.saxonArmy)
+        randomViking = random.choice(self.vikingArmy)
 
-        randomSaxon = self.saxonArmy[randomValueSaxon]
-        randomViking = self.vikingArmy[randomValueViking]
-
-        randomViking.receiveDamage(randomSaxon.strength)
+        result = randomViking.receiveDamage(randomSaxon.strength)
         
         if randomViking.health <= 0:
-            self.vikingArmy.pop(randomValueViking)
-        
-        return randomViking.receiveDamage(randomSaxon.strength)
+            self.vikingArmy.remove(randomViking)
+        return result
 
     def showStatus(self):
         # your code here
