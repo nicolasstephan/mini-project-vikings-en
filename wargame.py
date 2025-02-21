@@ -3,6 +3,7 @@
 
 from vikingsClasses import Soldier, Viking, Saxon, War
 import random
+import pygame
 
 
 soldier_names = ["albert","andres","archie","dani", "david","gerard","german","graham","imanol","laura"]

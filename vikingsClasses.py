@@ -1,4 +1,5 @@
 import random
+import pygame
 
 # Soldier
 
@@ -73,49 +74,28 @@ class War():
     
     def vikingAttack(self):
         # your code here
-        if not self.vikingArmy:
-            return
 
-        if len(self.vikingArmy) > 1:
-            randomViking = random.choice(self.vikingArmy)
-        else:
-            randomViking = self.vikingArmy[0]
+        return self.attackAction(self.vikingArmy, self.saxonArmy)
 
-        if len(self.saxonArmy) > 1:
-            randomSaxon = random.choice(self.saxonArmy)
-        else:
-            randomSaxon = self.saxonArmy[0]
-
-
-        result = randomSaxon.receiveDamage(randomViking.strength)
-
-        if randomSaxon.health <= 0:
-            self.saxonArmy.remove(randomSaxon)
-        return result
-
-
-        # What about "Saxon not attacking back"?
     
     def saxonAttack(self):
-        # your code here
-        if not self.saxonArmy:
-            return
-        
-        if len(self.saxonArmy) > 1:
-            randomSaxon = random.choice(self.saxonArmy)
-        else:
-            randomSaxon = self.saxonArmy[0]
+        #your code here
+
+        return self.attackAction(self.saxonArmy,self.vikingArmy)
 
 
-        if len(self.vikingArmy) > 1:
-            randomViking = random.choice(self.vikingArmy)
-        else:
-            randomViking = self.vikingArmy[0]
+    def attackAction(self, attackingArmy, defendingArmy):
 
-        result = randomViking.receiveDamage(randomSaxon.strength)
-        
-        if randomViking.health <= 0:
-            self.vikingArmy.remove(randomViking)
+        if not self.vikingArmy or not self.saxonArmy:
+            return "Battle is over"
+
+        attacker = random.choice(attackingArmy)
+        defender = random.choice(defendingArmy)
+
+        result = defender.receiveDamage(attacker.strength)
+
+        if defender.health <= 0:
+            defendingArmy.remove(defender)
         return result
 
     def showStatus(self):
