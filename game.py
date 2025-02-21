@@ -22,7 +22,7 @@ clock = pygame.time.Clock()
 running = True
 dt = 0
 
-background = pygame.image.load("Background.png").convert()
+background = pygame.image.load("background.png").convert()
 background = pygame.transform.scale(background, (1280, 720))
 
 player_pos = pygame.Vector2(screen.get_width() / 2, screen.get_height() / 2)
